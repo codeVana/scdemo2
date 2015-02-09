@@ -1,0 +1,44 @@
+<head>
+  <title>Forum</title>
+</head>
+<body>
+  {{> loginButtons}}
+  {{#if currentUser}}
+    {{> form}}
+  {{else}}
+    <p>Please log in to submit a new post</p>
+  {{/if}}
+  {{> posts}}
+</body>
+
+
+<template name="posts">
+  <h1>Posts</h1>
+  <ul>
+    {{#each posts}}
+      <li>
+        <h3>{{title}}</h3>
+        <p><em>by {{username}}</em></p>
+        <p>{{body}}</p>
+      </li>
+    {{/each}}
+  </ul>
+</template>
+
+
+
+<template name="form">
+  <form>
+    <p>Post Title:</p>
+    <label>
+      <input type="text" id="title" />
+    </label>
+    <br>
+    <p>Post Body:</p>
+    <label>
+      <textarea id="body"></textarea>
+    </label>
+    <br>
+    <input type="submit" value="Submit" id="submit"/>
+  </form>
+</template>
